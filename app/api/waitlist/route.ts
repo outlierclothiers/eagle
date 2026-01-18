@@ -32,7 +32,7 @@ This submission came from gprkinetic.pro
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: process.env.EMAIL_FROM || 'Kinetic GPR Pro <onboarding@resend.dev>',
+          from: process.env.EMAIL_FROM || 'Kinetic GPR Pro <noreply@forms.gprkinetic.pro>',
           to: ['panda@juche.org'],
           subject: emailSubject,
           text: emailBody,
