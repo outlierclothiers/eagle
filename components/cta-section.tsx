@@ -38,11 +38,26 @@ export function CTASection() {
   })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (formData.email && formData.name) {
-      setSubmitted(true)
-      // Here you would integrate with your email service
+      setIsSubmitting(true)
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        })
+        if (response.ok) {
+          setSubmitted(true)
+        }
+      } catch (error) {
+        console.error('Submission error:', error)
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
@@ -161,8 +176,8 @@ export function CTASection() {
                       </select>
                     </div>
 
-                    <Button type="submit" className="w-full group" size="lg">
-                      Join the Waitlist
+                    <Button type="submit" className="w-full group" size="lg" disabled={isSubmitting}>
+                      {isSubmitting ? 'Joining...' : 'Join the Waitlist'}
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
 
@@ -184,8 +199,8 @@ export function CTASection() {
                   <div className="pt-4 border-t border-border mt-6">
                     <p className="text-sm text-muted-foreground">
                       Questions? Reach out at{" "}
-                      <a href="mailto:hello@kineticgpr.com" className="text-primary hover:underline">
-                        hello@kineticgpr.com
+                      <a href="mailto:panda@juche.org" className="text-primary hover:underline">
+                        panda@juche.org
                       </a>
                     </p>
                   </div>

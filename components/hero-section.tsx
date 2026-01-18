@@ -9,11 +9,26 @@ import Image from "next/image"
 export function HeroSection() {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
-      setSubmitted(true)
+      setIsSubmitting(true)
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name: '', company: '', role: '' }),
+        })
+        if (response.ok) {
+          setSubmitted(true)
+        }
+      } catch (error) {
+        console.error('Submission error:', error)
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
@@ -77,8 +92,8 @@ export function HeroSection() {
                   className="flex-1 px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
-                <Button type="submit" size="lg" className="group whitespace-nowrap">
-                  Get Early Access
+                <Button type="submit" size="lg" className="group whitespace-nowrap" disabled={isSubmitting}>
+                  {isSubmitting ? 'Joining...' : 'Get Early Access'}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>

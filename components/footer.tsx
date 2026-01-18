@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Radio, Linkedin, Twitter, Mail } from "lucide-react"
+import Image from "next/image"
+import { Linkedin, Twitter, Mail } from "lucide-react"
 
 export function Footer() {
   return (
@@ -8,15 +9,19 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
           {/* Brand Column */}
           <div className="text-center lg:text-left">
-            <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <Radio className="w-5 h-5 text-primary-foreground" />
-              </div>
+            <Link href="/" className="inline-flex items-center gap-3 mb-4">
+              <Image 
+                src="/kinetic_logo.png"
+                alt="Kinetic GPR Pro"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain"
+              />
               <div className="flex flex-col items-start">
                 <span className="font-mono text-lg font-bold text-foreground tracking-tight leading-none">
                   Kinetic<span className="text-primary">.</span>
                 </span>
-                <span className="text-[10px] text-muted-foreground tracking-wider uppercase">GPR Intelligence</span>
+                <span className="text-[10px] text-muted-foreground tracking-wider uppercase">GPR Pro</span>
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
@@ -29,8 +34,8 @@ export function Footer() {
           <div className="flex flex-col items-center lg:items-end gap-4">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Mail className="w-4 h-4" />
-              <a href="mailto:hello@kineticgpr.com" className="hover:text-foreground transition-colors">
-                hello@kineticgpr.com
+              <a href="mailto:panda@juche.org" className="hover:text-foreground transition-colors">
+                panda@juche.org
               </a>
             </div>
             <div className="flex gap-3">
@@ -55,7 +60,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            {new Date().getFullYear()} Kinetic Infrastructure. All rights reserved.
+            © {new Date().getFullYear()} Kinetic GPR Pro. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

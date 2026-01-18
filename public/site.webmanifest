@@ -1,0 +1,28 @@
+{
+  "name": "Kinetic GPR Pro",
+  "short_name": "Kinetic GPR",
+  "description": "AI-powered Ground Penetrating Radar analysis platform for rail ballast assessment",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#4B9CD3",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/kinetic_logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/kinetic_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

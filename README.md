@@ -1,30 +1,56 @@
-# GPR business model
+# Kinetic GPR Pro
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+AI-powered Ground Penetrating Radar analysis platform for rail ballast assessment and subsurface infrastructure intelligence.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/jesse-james-projects-7fcb88bd/v0-gpr-business-model)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/pBTKwI3yDXO)
+## Features
 
-## Overview
+- **AI-Enhanced GPR Analysis** - Automated multi-model framework delivering 86% accuracy
+- **70% Faster Analysis** - Stop waiting weeks for ballast reports
+- **Rail Infrastructure Focus** - Purpose-built for rail ballast assessment
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Tech Stack
+
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- TypeScript
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
+```
+
+## Environment Variables
+
+For email notifications, configure one of the following:
+
+```env
+# Option 1: Resend (recommended)
+RESEND_API_KEY=your_resend_api_key
+EMAIL_FROM=Kinetic GPR Pro <noreply@gprkinetic.pro>
+
+# Option 2: Formspree
+FORMSPREE_ID=your_formspree_form_id
+```
 
 ## Deployment
 
-Your project is live at:
+Deploy to [Vercel](https://vercel.com) for the best experience with Next.js.
 
-**[https://vercel.com/jesse-james-projects-7fcb88bd/v0-gpr-business-model](https://vercel.com/jesse-james-projects-7fcb88bd/v0-gpr-business-model)**
+---
 
-## Build your app
+**Website:** [https://gprkinetic.pro](https://gprkinetic.pro)  
+**Contact:** panda@juche.org
 
-Continue building your app on:
-
-**[https://v0.app/chat/pBTKwI3yDXO](https://v0.app/chat/pBTKwI3yDXO)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+© 2026 Kinetic GPR Pro. All rights reserved.
