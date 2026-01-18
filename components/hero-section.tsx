@@ -1,7 +1,22 @@
+"use client"
+
+import React from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Scan, Shield, Zap } from "lucide-react"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
+  const [email, setEmail] = useState("")
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email) {
+      setSubmitted(true)
+    }
+  }
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background Pattern */}
@@ -19,96 +34,84 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+            {/* Launch Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-sm font-medium text-primary">AI-Powered Subsurface Intelligence</span>
+              <span className="text-sm font-medium text-accent">Launching May 2026</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-mono font-bold text-foreground leading-tight text-balance">
-              See What Lies{" "}
-              <span className="text-primary">Beneath</span>
+              AI-Enhanced GPR for{" "}
+              <span className="text-primary">Rail Ballast</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
-              Advanced Ground Penetrating Radar services for rail infrastructure, 
-              utility detection, and subsurface asset mapping. Prevent failures before they happen.
+              Automated, Hybrid Multi-Model Framework for Geotechnical Innovation. 
+              Stop waiting weeks for ballast reports. Get results in hours, not weeks.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="group">
-                Request Assessment
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button size="lg" variant="outline">
-                View Case Studies
-              </Button>
+            {/* Key Metrics Row */}
+            <div className="flex flex-wrap gap-6">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-card border border-border">
+                <span className="text-3xl font-mono font-bold text-[#f97316]">86%</span>
+                <span className="text-sm text-muted-foreground">Accuracy</span>
+              </div>
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-card border border-border">
+                <span className="text-3xl font-mono font-bold text-primary">83.4%</span>
+                <span className="text-sm text-muted-foreground">Precision</span>
+              </div>
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-card border border-border">
+                <span className="text-3xl font-mono font-bold text-accent">70%</span>
+                <span className="text-sm text-muted-foreground">Faster Analysis</span>
+              </div>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-              <div>
-                <div className="text-2xl lg:text-3xl font-mono font-bold text-foreground">15k+</div>
-                <div className="text-sm text-muted-foreground">Track Miles Scanned</div>
+            {/* Waitlist Signup */}
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+                <Button type="submit" size="lg" className="group whitespace-nowrap">
+                  Get Early Access
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </form>
+            ) : (
+              <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-accent/20 border border-accent/30 max-w-md">
+                <CheckCircle2 className="w-5 h-5 text-accent" />
+                <span className="text-foreground font-medium">You are on the list. We will be in touch.</span>
               </div>
-              <div>
-                <div className="text-2xl lg:text-3xl font-mono font-bold text-foreground">98%</div>
-                <div className="text-sm text-muted-foreground">Detection Accuracy</div>
-              </div>
-              <div>
-                <div className="text-2xl lg:text-3xl font-mono font-bold text-foreground">3-5x</div>
-                <div className="text-sm text-muted-foreground">Faster Analysis</div>
-              </div>
-            </div>
+            )}
+
+            <p className="text-sm text-muted-foreground">
+              Join 50+ rail operators and GPR service providers on the waitlist.
+            </p>
           </div>
 
-          {/* Right Content - Visual */}
+          {/* Right Content - Hero Image */}
           <div className="relative">
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Radar Animation Ring */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-full h-full rounded-full border border-primary/20 animate-pulse" />
-                <div className="absolute w-3/4 h-3/4 rounded-full border border-primary/30" />
-                <div className="absolute w-1/2 h-1/2 rounded-full border border-primary/40" />
-                <div className="absolute w-1/4 h-1/4 rounded-full bg-primary/20" />
-              </div>
-
-              {/* Floating Feature Cards */}
-              <div className="absolute top-8 right-0 bg-card border border-border rounded-xl p-4 shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                    <Scan className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Real-time Scanning</div>
-                    <div className="text-xs text-muted-foreground">60+ km/h hi-rail speed</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-16 left-0 bg-card border border-border rounded-xl p-4 shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
-                    <Shield className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Safety First</div>
-                    <div className="text-xs text-muted-foreground">Non-destructive testing</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute top-1/2 left-8 -translate-y-1/2 bg-card border border-border rounded-xl p-4 shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-chart-2/20 flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-chart-2" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">AI Analysis</div>
-                    <div className="text-xs text-muted-foreground">Automated reporting</div>
-                  </div>
-                </div>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl">
+              <Image 
+                src="/images/hero-ballast.jpeg"
+                alt="AI-Enhanced GPR Interpretation for Rail Ballast Investigation - 3D visualization showing automated multi-model analysis"
+                width={800}
+                height={600}
+                className="w-full h-auto"
+                priority
+              />
+              {/* Subtle gradient overlay for text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
             </div>
+            
+            {/* Decorative Elements */}
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
+            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-accent/15 rounded-full blur-3xl" />
           </div>
         </div>
       </div>

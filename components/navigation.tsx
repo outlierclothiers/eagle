@@ -6,10 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, Radio } from "lucide-react"
 
 const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "Technology", href: "#technology" },
-  { label: "Industries", href: "#industries" },
-  { label: "About", href: "#about" },
+  { label: "Problem", href: "#problem" },
+  { label: "Solution", href: "#solution" },
+  { label: "Markets", href: "#markets" },
 ]
 
 export function Navigation() {
@@ -24,9 +23,12 @@ export function Navigation() {
             <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
               <Radio className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-mono text-lg font-bold text-foreground tracking-tight">
-              Kinetic<span className="text-primary">.</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-mono text-lg font-bold text-foreground tracking-tight leading-none">
+                Kinetic<span className="text-primary">.</span>
+              </span>
+              <span className="text-[10px] text-muted-foreground tracking-wider uppercase">GPR Intelligence</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -44,10 +46,13 @@ export function Navigation() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Request Demo
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span>Launching May 2026</span>
+            </div>
+            <Button size="sm" asChild>
+              <Link href="#waitlist">Join Waitlist</Link>
             </Button>
-            <Button size="sm">Get a Quote</Button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -75,10 +80,13 @@ export function Navigation() {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="justify-start">
-                  Request Demo
+                <div className="flex items-center gap-2 text-sm text-muted-foreground py-2">
+                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  <span>Launching May 2026</span>
+                </div>
+                <Button size="sm" asChild>
+                  <Link href="#waitlist" onClick={() => setMobileMenuOpen(false)}>Join Waitlist</Link>
                 </Button>
-                <Button size="sm">Get a Quote</Button>
               </div>
             </div>
           </div>
