@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Linkedin, Twitter, Mail } from "lucide-react"
+import { Linkedin, Mail } from "lucide-react"
 
 export function Footer() {
   return (
@@ -38,22 +38,15 @@ export function Footer() {
                 panda@juche.org
               </a>
             </div>
-            <div className="flex gap-3">
-              <a 
-                href="#" 
-                className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a 
-                href="#" 
-                className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-            </div>
+            <a 
+              href="https://www.linkedin.com/company/111273399" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
